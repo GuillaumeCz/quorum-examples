@@ -36,6 +36,9 @@ WORKDIR /
 RUN wget -q https://github.com/jpmorganchase/quorum/releases/download/v1.2.0/porosity
 RUN mv porosity /usr/local/bin && chmod 0755 /usr/local/bin/porosity
 
-COPY ./examples ./
+COPY ./examples /examples
+WORKDIR /examples/7nodes/
 
 EXPOSE 22000 22001 22002 22003 22004 22005 22006
+
+#RUN ./raft-init.sh && ./raft-start.sh && tail -f qdata/logs/1.log
